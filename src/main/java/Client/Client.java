@@ -26,14 +26,14 @@ public class Client {
                   
             //InputStreamReader reader = new InputStreamReader(socket.getInputStream()); 
             
-            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+            /*BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
             
             String message = input.readLine();
             
             PrintWriter outMsg = new PrintWriter(socket.getOutputStream());
             
             outMsg.println(message);
-            outMsg.flush();
+            outMsg.flush();*/
             
             socket.close();
         } catch (IOException ex) {

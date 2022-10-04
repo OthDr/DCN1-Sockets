@@ -9,16 +9,16 @@ public class Server {
     
     public static void main(String[] args) throws IOException {
         
-        Socket socket = null;
+        Socket clientSocket = null;
         
         int port = ServConfig.PORT;
         
         ServerSocket server = new ServerSocket(port);
         
-        socket = server.accept();
+        clientSocket = server.accept();
         
-        if(socket != null){
-            System.out.println("Connection successfully established with: "+socket.getInetAddress());
+        if(clientSocket != null){
+            System.out.println("Connection successfully established with: "+clientSocket.getInetAddress());
         }
         
         
