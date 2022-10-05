@@ -5,6 +5,7 @@
 #### Client Communication Steps:
 
 **First: Create a socket** 
+<br>
 1)- Creating socket streams <br>
 2)- Reading from & Writing to : the socket by the previously created streams <br>
 3)- Append the socket io stream readers to buffered reader form more effeciency <br>
