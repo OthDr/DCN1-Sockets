@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +22,7 @@ public class Client {
 
         int port = ClientConfig.PORT;
         String host = ClientConfig.HOST;
+        Scanner keyboard = new Scanner(System.in);
 
         try {
             Socket clientSocket;
@@ -45,6 +47,8 @@ public class Client {
             String message = "Hello!";
 
             // Send data to the server by buffered writing to the output stream
+            /*
+            //** staticly typed data 
             bufferedOutputStreamWriter.write(message); // write a msg to get it streamed out to the server
             bufferedOutputStreamWriter.newLine();
 
@@ -55,25 +59,33 @@ public class Client {
             
             bufferedOutputStreamWriter.write("SierraCharlie");// I Quit
             bufferedOutputStreamWriter.newLine();
-            bufferedOutputStreamWriter.flush(); // flush/clear data
+            bufferedOutputStreamWriter.flush(); // flush/clear data*/
+            
+            String keyboardInput;
 
             String responseData; // the data that comes from the server as a response
 
-            // Read data comming from the server
-            while ((responseData = bufferedInputStreamReader.readLine()) != null) {
+            while (true) {
+                keyboardInput = keyboard.nextLine();
+                bufferedOutputStreamWriter.write(keyboardInput);
+                bufferedOutputStreamWriter.newLine();
+                bufferedOutputStreamWriter.flush();
 
-                System.out.println("***** Server :" + responseData);
+                // Read data comming from the server
+                if ((responseData = bufferedInputStreamReader.readLine()) != null) {
 
-                if (responseData.contains("7Tango")) {// if the server responds with '7Tango' the communication ends
-                    break;
+                    System.out.println("***** Server :" + responseData);
+
+                    if (responseData.contains("7Tango")) {// if the server responds with '7Tango' the communication ends
+                        System.out.println("server has left");
+                        bufferedOutputStreamWriter.close();
+                        bufferedInputStreamReader.close();
+                        clientSocket.close();// close socket
+                    }
                 }
             }
 
             // close communication (Input and Output)
-            bufferedOutputStreamWriter.close();
-            bufferedInputStreamReader.close();
-            clientSocket.close();// close socket
-
         } catch (IOException ex) {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
