@@ -11,9 +11,8 @@
 
 **Then send data to the server by buffered writing to the output stream**
 
-`
 
-    // write a msg to get it streamed out to the server
+    `// write a msg to get it streamed out to the server
     bufferedOutputStreamWriter.write(message); 
     bufferedOutputStreamWriter.newLine();
 
@@ -27,5 +26,4 @@
     bufferedOutputStreamWriter.newLine();
 
     // flush/clear data
-    bufferedOutputStreamWriter.flush(); 
-`
+    bufferedOutputStreamWriter.flush();`
