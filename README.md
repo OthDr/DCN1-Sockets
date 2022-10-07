@@ -11,20 +11,26 @@
 3)- Append the socket io stream readers to buffered reader form more effeciency <br>
 **Then send data to the server by buffered writing to the output stream**
 
+```java
+// write a msg to get it streamed out to the server
+bufferedOutputStreamWriter.write(message); 
+bufferedOutputStreamWriter.newLine();
+```
 
+```java
+// write a msg to get istreamed out to the server
+bufferedOutputStreamWriter.write("I am a client"); 
+bufferedOutputStreamWriter.newLine();
+bufferedOutputStreamWriter.flush();
+```
+     
+```java       
+// I Quit        
+bufferedOutputStreamWriter.write("SierraCharlie");
+bufferedOutputStreamWriter.newLine();
+```
 
-    `// write a msg to get it streamed out to the server
-    bufferedOutputStreamWriter.write(message); 
-    bufferedOutputStreamWriter.newLine();
-
-    // write a msg to get istreamed out to the server
-    bufferedOutputStreamWriter.write("I am a client"); 
-    bufferedOutputStreamWriter.newLine();
-    bufferedOutputStreamWriter.flush();
-            
-    // I Quit        
-    bufferedOutputStreamWriter.write("SierraCharlie");
-    bufferedOutputStreamWriter.newLine();
-
-    // flush/clear data
-    bufferedOutputStreamWriter.flush();`
+```java
+// flush/clear data
+bufferedOutputStreamWriter.flush();
+```
